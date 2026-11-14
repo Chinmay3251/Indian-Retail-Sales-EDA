@@ -1,0 +1,21 @@
+customer_id,tenure,monthly_charges,contract,payment_method,support_calls,churn
+C001,2,75.5,Month-to-month,Electronic check,4,Yes
+C002,24,55.0,One year,Credit card,1,No
+C003,5,89.0,Month-to-month,Electronic check,5,Yes
+C004,48,45.0,Two year,Bank transfer,0,No
+C005,12,70.0,One year,Credit card,2,No
+C006,3,95.0,Month-to-month,Electronic check,6,Yes
+C007,36,50.0,Two year,Bank transfer,1,No
+C008,8,82.0,Month-to-month,Credit card,3,Yes
+C009,60,40.0,Two year,Bank transfer,0,No
+C010,18,65.0,One year,Credit card,2,No
+C011,4,91.0,Month-to-month,Electronic check,5,Yes
+C012,30,52.0,Two year,Bank transfer,1,No
+C013,9,78.0,Month-to-month,Credit card,4,Yes
+C014,42,47.0,One year,Bank transfer,0,No
+C015,15,68.0,One year,Credit card,2,No
+C016,1,99.0,Month-to-month,Electronic check,7,Yes
+C017,54,43.0,Two year,Bank transfer,0,No
+C018,21,59.0,One year,Credit card,1,No
+C019,6,86.0,Month-to-month,Electronic check,4,Yes
+C020,39,49.0,Two year,Bank transfer,1,No
