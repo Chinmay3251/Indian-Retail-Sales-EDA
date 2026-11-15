@@ -1,0 +1,1 @@
+pandas>=2.0\nnumpy>=1.24\nmatplotlib>=3.7\nprophet>=1.1.5\nyfinance>=0.2.40\nstreamlit>=1.30\npytest>=7.0\n
