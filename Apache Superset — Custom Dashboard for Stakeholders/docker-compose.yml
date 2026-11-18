@@ -1,0 +1,50 @@
+services:
+  warehouse-db:
+    image: postgres:16
+    container_name: w11d3-warehouse-db
+    environment:
+      POSTGRES_DB: analytics
+      POSTGRES_USER: analyst
+      POSTGRES_PASSWORD: analyst_local_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - warehouse_data:/var/lib/postgresql/data
+      - ./warehouse/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U analyst -d analytics"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  superset:
+    image: apache/superset:latest
+    container_name: w11d3-superset
+    depends_on:
+      warehouse-db:
+        condition: service_healthy
+    ports:
+      - "8088:8088"
+    environment:
+      SUPERSET_SECRET_KEY: "replace-this-local-demo-secret-key-before-production"
+      ADMIN_USERNAME: admin
+      ADMIN_FIRST_NAME: Superset
+      ADMIN_LAST_NAME: Admin
+      ADMIN_EMAIL: admin@example.com
+      ADMIN_PASSWORD: admin
+      SUPERSET_CONFIG_PATH: /app/pythonpath/superset_config.py
+    volumes:
+      - ./superset/superset_config.py:/app/pythonpath/superset_config.py:ro
+    command: >
+      /bin/sh -c "superset db upgrade &&
+      (superset fab create-admin --username admin --firstname Superset --lastname Admin --email admin@example.com --password admin || true) &&
+      superset init &&
+      superset run -h 0.0.0.0 -p 8088"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8088/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 15
+
+volumes:
+  warehouse_data:
