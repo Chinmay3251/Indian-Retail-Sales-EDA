@@ -1,0 +1,3 @@
+SECRET_KEY = "local-demo-change-before-production"
+WTF_CSRF_ENABLED = True
+FEATURE_FLAGS = {"DASHBOARD_NATIVE_FILTERS": True, "DASHBOARD_CROSS_FILTERS": True}
