@@ -6,7 +6,7 @@ import mlflow
 ROOT = Path(__file__).resolve().parents[1]
 
 def run(csv, experiment, run_name):
-    df = pd.read_csv(csv)
+    df = pd.read_csv(csv)git push -u origin feat/w12d2-[name]
     if df.empty: raise ValueError("CSV has no data rows")
     numeric = df.select_dtypes(include="number")
     missing = int(df.isna().sum().sum())
