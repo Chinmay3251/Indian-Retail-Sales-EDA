@@ -1,0 +1,17 @@
+flowchart LR
+    A[Approved customer and transaction sources] --> B[Ingestion and immutable raw snapshots]
+    B --> C[Schema and data-quality validation]
+    C -->|valid batch| D[Curated analytical storage]
+    C -->|invalid batch| Q[Quarantine and alert]
+    D --> E[Feature engineering pipeline]
+    E --> F[Training and evaluation]
+    F --> G[Model and artifact registry]
+    G --> H[Approved batch scoring or prediction API]
+    D --> H
+    H --> I[Authenticated Streamlit or BI interface]
+    I --> J[Business users]
+    E --> M[Data and feature monitoring]
+    F --> N[Model quality and drift monitoring]
+    H --> O[Service logs, metrics, and alerts]
+    B --> P[Audit metadata]
+    I --> P
