@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.duckdb
+.env
+reports/benchmark_results.csv
